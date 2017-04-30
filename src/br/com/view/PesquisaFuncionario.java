@@ -35,6 +35,11 @@ public class PesquisaFuncionario extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         jLabel7.setText("PESQUISAR FUNCIONÁRIO");
 
+        pesqFunc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pesqFuncActionPerformed(evt);
+            }
+        });
         pesqFunc.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 pesqFuncKeyReleased(evt);
@@ -84,8 +89,8 @@ public class PesquisaFuncionario extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pesqFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -100,6 +105,10 @@ public class PesquisaFuncionario extends javax.swing.JInternalFrame {
             this.jTableFunc.setModel(tableFunc);
         }
     }//GEN-LAST:event_pesqFuncKeyReleased
+
+    private void pesqFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesqFuncActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pesqFuncActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
