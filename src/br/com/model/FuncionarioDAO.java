@@ -1,17 +1,14 @@
 package br.com.model;
 
-import Util.HibernateUtil;
 import br.com.entity.Funcionario;
+import br.com.util.HibernateUtil;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
-
-
-
-
 
 public class FuncionarioDAO {
 
@@ -50,5 +47,21 @@ public class FuncionarioDAO {
 
         return listaFunc;
 
+    }
+
+    public boolean inserirFuncionario(Funcionario funcionario) {
+        
+        try{
+            sessao = HibernateUtil.getSessionFactory().openSession();
+            sessao.beginTransaction();
+            sessao.save(funcionario);
+            sessao.getTransaction().commit();
+            return true;
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex);
+            return false;
+        }finally{
+            sessao.close();
+        }
     }
 }

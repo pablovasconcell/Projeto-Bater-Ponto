@@ -1,4 +1,4 @@
-package Util;
+package br.com.util;
 
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.SessionFactory;

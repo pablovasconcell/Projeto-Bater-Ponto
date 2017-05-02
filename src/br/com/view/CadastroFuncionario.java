@@ -1,5 +1,9 @@
 package br.com.view;
 
+import br.com.entity.Funcionario;
+import br.com.model.FuncionarioDAO;
+import javax.swing.JOptionPane;
+
 public class CadastroFuncionario extends javax.swing.JInternalFrame {
 
     public CadastroFuncionario() {
@@ -153,7 +157,18 @@ public class CadastroFuncionario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cpfuncActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        Funcionario funcionario = new Funcionario();
+        FuncionarioDAO dao = new FuncionarioDAO();
+        
+        funcionario.setCPF(cpfunc.getText());
+        funcionario.setIdade(Integer.parseInt(idadeFunc.getText()));
+        funcionario.setNome(nomeFunc.getText());
+        funcionario.setTelefone(teleFunc.getText());
+        
+        if(dao.inserirFuncionario(funcionario)){
+            JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+            setVisible(false);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
