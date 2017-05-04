@@ -30,21 +30,22 @@ public class TableModelFuncionario extends AbstractTableModel {
         }
     }
 
-    public TableModelFuncionario(String idFunc) {
+    public TableModelFuncionario(int idFunc) {
 
         listaTableFuncionario = new ArrayList<>();
         adicionaTabelaFuncPorID(idFunc);
 
     }
 
-    public void adicionaTabelaFuncPorID(String idFunc) {
+    public void adicionaTabelaFuncPorID(int idFunc) {
 
         FuncionarioDAO dao = new FuncionarioDAO();
 
-        for (Funcionario func : dao.buscaFuncID(idFunc)) {
+        for (Funcionario func : dao.buscaFuncID(idFunc)){
 
             listaTableFuncionario.add(func);
         }
+           fireTableDataChanged();
     }
 
     @Override
@@ -63,7 +64,7 @@ public class TableModelFuncionario extends AbstractTableModel {
         switch (columnIndex) {
 
             case 0:
-                return this.listaTableFuncionario.get(rowIndex).getIdFunc();
+                return this.listaTableFuncionario.get(rowIndex).getId();
             case 1:
                 return this.listaTableFuncionario.get(rowIndex).getNome();
             case 2:

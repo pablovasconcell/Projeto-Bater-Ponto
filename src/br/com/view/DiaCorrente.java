@@ -4,8 +4,13 @@ import br.com.entity.DiaCorrenteEntity;
 import br.com.entity.Funcionario;
 import br.com.model.DiaCorrenteDAO;
 import br.com.model.FuncionarioDAO;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DiaCorrente extends javax.swing.JInternalFrame {
 
@@ -151,11 +156,40 @@ public class DiaCorrente extends javax.swing.JInternalFrame {
         DiaCorrenteEntity diaCorrente = new DiaCorrenteEntity();
         DiaCorrenteDAO dao = new DiaCorrenteDAO();
 
+        int hrE = Integer.parseInt(horaEntrada.getSelectedItem().toString());
+        int hrS = Integer.parseInt(horaS.getSelectedItem().toString());
+
+        int minE = Integer.parseInt(minutoEntrada.getSelectedItem().toString());
+        int minS = Integer.parseInt(minutoS.getSelectedItem().toString());
+
+        String tmp1 = hrE + ":" + minE;
+        String tmp2 = hrS + ":" + minS;
+
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+        Date date1;
+        Date date2;
+        String diffe = null;
+        long differen;
+        try {
+            
+            date1 = format.parse(tmp1);
+            date2 = format.parse(tmp2);
+            differen = date1.getTime() - date2.getTime();
+            diffe = String.format( "%03d:%02d", differen / 3600000, (differen / 60000 ) % 60 );
+            
+        } catch (ParseException ex) {
+            
+        }
+        
+        
+        
+        diaCorrente.setDiff(diffe);
         diaCorrente.setDataE(dataE.getText());
-        diaCorrente.setHoraE(Integer.parseInt(horaEntrada.getSelectedItem().toString()));
-        diaCorrente.setHoraS(Integer.parseInt(horaS.getSelectedItem().toString()));
-        diaCorrente.setMinutoE(Integer.parseInt(minutoEntrada.getSelectedItem().toString()));
-        diaCorrente.setMinutoS(Integer.parseInt(minutoS.getSelectedItem().toString()));
+        diaCorrente.setHoraE(hrE);
+        diaCorrente.setHoraS(hrS);
+        diaCorrente.setMinutoE(minE);
+        diaCorrente.setMinutoS(minS);
+
         diaCorrente.setFuncionario((Funcionario) cbxFunc.getSelectedItem());
 
         dao.insereDiaCorrente(diaCorrente);

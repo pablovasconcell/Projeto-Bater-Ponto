@@ -24,15 +24,17 @@ public class FuncionarioDAO {
 
         Criteria crit = sessao.createCriteria(Funcionario.class);
 
-        crit.addOrder(Order.asc("nome"));
+        crit.addOrder(Order.asc("id"));
 
         listaFunc = crit.list();
 
         return listaFunc;
     }
 
-    public List<Funcionario> buscaFuncID(String idFunc) {
+    public List<Funcionario> buscaFuncID(int idFunc) {
 
+        
+        
         List<Funcionario> listaFunc = new ArrayList<>();
 
         sessao = HibernateUtil.getSessionFactory().openSession();
@@ -41,7 +43,7 @@ public class FuncionarioDAO {
 
         Criteria crit = sessao.createCriteria(Funcionario.class);
 
-        crit.add(Restrictions.like("IdFunc", idFunc + "%"));
+        crit.add(Restrictions.like("id", idFunc + "%"));
 
         listaFunc = crit.list();
 

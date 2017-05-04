@@ -45,6 +45,8 @@ public class DiaCorrenteEntity {
         this.dataS = dataS;
     }*/
     
+    private String diff;
+    
     private int horaE;
     private int minutoE;
     
@@ -89,6 +91,14 @@ public class DiaCorrenteEntity {
 
     public void setMinutoS(int minutoS) {
         this.minutoS = minutoS;
+    }
+
+    public String getDiff() {
+        return diff;
+    }
+
+    public void setDiff(String diff) {
+        this.diff = diff;
     }
     
     

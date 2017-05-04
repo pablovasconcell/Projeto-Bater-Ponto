@@ -9,7 +9,7 @@ public class PesquisaFuncionario extends javax.swing.JInternalFrame {
     
     
     
-    TableModelFuncionario tableFunc;
+    public static TableModelFuncionario tableFunc;
 
     public PesquisaFuncionario() {
         initComponents();
@@ -55,7 +55,7 @@ public class PesquisaFuncionario extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
+
             }
         ));
         jScrollPane1.setViewportView(jTableFunc);
@@ -101,7 +101,7 @@ public class PesquisaFuncionario extends javax.swing.JInternalFrame {
             this.tableFunc = new TableModelFuncionario();
             this.jTableFunc.setModel(tableFunc);
         } else {
-            this.tableFunc = new TableModelFuncionario(pesqFunc.getText());
+            this.tableFunc = new TableModelFuncionario(Integer.parseInt(pesqFunc.getText()));
             this.jTableFunc.setModel(tableFunc);
         }
     }//GEN-LAST:event_pesqFuncKeyReleased
