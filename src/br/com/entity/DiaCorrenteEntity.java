@@ -5,11 +5,39 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
-
 public class DiaCorrenteEntity {
+    
+    private String data;
+    private int horaE;
+    private int minutoE;
+    
+    private int horaS;
+    private int minutoS;
+    
+    private String status;
+    private int tempo;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public int getTempo() {
+        return tempo;
+    }
+
+    public void setTempo(int tempo) {
+        this.tempo = tempo;
+    }
+    
+    @ManyToOne(targetEntity = Funcionario.class)
+    private Funcionario funcionario;
+    
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,36 +51,6 @@ public class DiaCorrenteEntity {
         this.funcionario = funcionario;
     }
     
-    @ManyToOne(targetEntity = Funcionario.class)
-    private Funcionario funcionario;
-    
-    private String dataE;
-    //private String dataS;
-
-    public String getDataE() {
-        return dataE;
-    }
-
-    public void setDataE(String dataE) {
-        this.dataE = dataE;
-    }
-
-    /*public String getDataS() {
-        return dataS;
-    }
-
-    public void setDataS(String dataS) {
-        this.dataS = dataS;
-    }*/
-    
-    private String diff;
-    
-    private int horaE;
-    private int minutoE;
-    
-    private int horaS;
-    private int minutoS;
-
     public int getHoraE() {
         return horaE;
     }
@@ -91,15 +89,13 @@ public class DiaCorrenteEntity {
 
     public void setMinutoS(int minutoS) {
         this.minutoS = minutoS;
+    }    
+
+    public String getData() {
+        return data;
     }
 
-    public String getDiff() {
-        return diff;
+    public void setData(String data) {
+        this.data = data;
     }
-
-    public void setDiff(String diff) {
-        this.diff = diff;
-    }
-    
-    
 }

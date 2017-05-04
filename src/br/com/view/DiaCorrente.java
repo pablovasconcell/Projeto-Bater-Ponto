@@ -4,13 +4,17 @@ import br.com.entity.DiaCorrenteEntity;
 import br.com.entity.Funcionario;
 import br.com.model.DiaCorrenteDAO;
 import br.com.model.FuncionarioDAO;
+import static java.lang.Math.abs;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class DiaCorrente extends javax.swing.JInternalFrame {
 
@@ -85,48 +89,43 @@ public class DiaCorrente extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(registrar)))
+                .addGap(31, 31, 31)
+                .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(horaEntrada, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(20, 20, 20)
-                                .addComponent(horaS, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(minutoEntrada, 0, 61, Short.MAX_VALUE)
-                            .addComponent(minutoS, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel5)
+                        .addGap(23, 23, 23)
+                        .addComponent(cbxFunc, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel3))
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(dataE, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(registrar)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel4)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(horaS, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(horaEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(dataE, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(cbxFunc, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                            .addComponent(minutoS, 0, 55, Short.MAX_VALUE)
+                            .addComponent(minutoEntrada, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(cbxFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -144,15 +143,16 @@ public class DiaCorrente extends javax.swing.JInternalFrame {
                     .addComponent(jLabel4)
                     .addComponent(horaS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(minutoS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(registrar)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
+        
         DiaCorrenteEntity diaCorrente = new DiaCorrenteEntity();
         DiaCorrenteDAO dao = new DiaCorrenteDAO();
 
@@ -165,34 +165,51 @@ public class DiaCorrente extends javax.swing.JInternalFrame {
         String tmp1 = hrE + ":" + minE;
         String tmp2 = hrS + ":" + minS;
 
-        SimpleDateFormat format = new SimpleDateFormat("HH:mm");
-        Date date1;
-        Date date2;
-        String diffe = null;
-        long differen;
-        try {
+        if (tmp1 == tmp2) {
+            JOptionPane.showMessageDialog(null, "Hora de entrada igual à saída.");
+        } else {
+            SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+            Date date1;
+            Date date2;
+  
+            long differen;
+            try {
+
+                date1 = format.parse(tmp1);
+                date2 = format.parse(tmp2);
+                differen = date1.getTime() - date2.getTime();
+                differen = differen * -1;
+                int tempoMin =(int) TimeUnit.MILLISECONDS.toMinutes(differen);
+                if(tempoMin==540){
+                    diaCorrente.setTempo(0);
+                    diaCorrente.setStatus("Normal");
+                }else if(tempoMin<540){
+                    diaCorrente.setTempo(abs(tempoMin - 540));
+                    diaCorrente.setStatus("Atrasado");
+                }else if(tempoMin>540){
+                    diaCorrente.setTempo(tempoMin - 540);
+                    diaCorrente.setStatus("Hora Extra");
+                }
+                
+            } catch (ParseException ex) {
+
+            }
             
-            date1 = format.parse(tmp1);
-            date2 = format.parse(tmp2);
-            differen = date1.getTime() - date2.getTime();
-            diffe = String.format( "%03d:%02d", differen / 3600000, (differen / 60000 ) % 60 );
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            Date date = new Date();
             
-        } catch (ParseException ex) {
-            
+            diaCorrente.setData(dateFormat.format(date));
+            diaCorrente.setHoraE(hrE);
+            diaCorrente.setHoraS(hrS);
+            diaCorrente.setMinutoE(minE);
+            diaCorrente.setMinutoS(minS);
+
+            diaCorrente.setFuncionario((Funcionario) cbxFunc.getSelectedItem());
+
+            dao.insereDiaCorrente(diaCorrente);
+            JOptionPane.showMessageDialog(null, "Registrado com sucesso!");
+            setVisible(false);
         }
-        
-        
-        
-        diaCorrente.setDiff(diffe);
-        diaCorrente.setDataE(dataE.getText());
-        diaCorrente.setHoraE(hrE);
-        diaCorrente.setHoraS(hrS);
-        diaCorrente.setMinutoE(minE);
-        diaCorrente.setMinutoS(minS);
-
-        diaCorrente.setFuncionario((Funcionario) cbxFunc.getSelectedItem());
-
-        dao.insereDiaCorrente(diaCorrente);
     }//GEN-LAST:event_registrarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
