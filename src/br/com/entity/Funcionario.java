@@ -1,20 +1,45 @@
 package br.com.entity;
 
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Funcionario {
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<DiaCorrenteEntity> getDiaCorrente() {
+        return diaCorrente;
+    }
+
+    public void setDiaCorrente(List<DiaCorrenteEntity> diaCorrente) {
+        this.diaCorrente = diaCorrente;
+    }
    
-    
-    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idFunc;
+    private int id;
 
+    @OneToMany(targetEntity = DiaCorrenteEntity.class)
+    private List<DiaCorrenteEntity> diaCorrente;
+    
     private String nome;
+
+    @Override
+    public String toString() {
+        return nome;
+    }
     private int idade;
     private String telefone;
     private String CPF;
@@ -52,10 +77,10 @@ public class Funcionario {
     }
 
     public int getIdFunc() {
-        return idFunc;
+        return id;
     }
 
     public void setIdFunc(int idFunc) {
-        this.idFunc = idFunc;
+        this.id = idFunc;
     }
 }

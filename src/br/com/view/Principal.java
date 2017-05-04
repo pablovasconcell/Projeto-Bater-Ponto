@@ -24,8 +24,7 @@ public class Principal extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        registrarButton = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
@@ -34,9 +33,7 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/tela principal.png"))); // NOI18N
-
-        jDesktopPanel1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/img/tela principal.png"))); // NOI18N
 
         javax.swing.GroupLayout jDesktopPanel1Layout = new javax.swing.GroupLayout(jDesktopPanel1);
         jDesktopPanel1.setLayout(jDesktopPanel1Layout);
@@ -48,6 +45,7 @@ public class Principal extends javax.swing.JFrame {
             jDesktopPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+        jDesktopPanel1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jMenu1.setText("Cadastro");
 
@@ -75,21 +73,13 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu4.setText("Bater Ponto");
 
-        jMenuItem6.setText("Entrada");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+        registrarButton.setText("Registrar");
+        registrarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
+                registrarButtonActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem6);
-
-        jMenuItem7.setText("Saida");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMenuItem7);
+        jMenu4.add(registrarButton);
 
         jMenuBar1.add(jMenu4);
 
@@ -168,17 +158,11 @@ public class Principal extends javax.swing.JFrame {
         pesqfunc.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        SaidaFuncionario saida = new SaidaFuncionario();
-        jDesktopPanel1.add(saida);
-        saida.setVisible(true);
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
-
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        EntradaFuncionario entrada = new EntradaFuncionario();
+    private void registrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarButtonActionPerformed
+        DiaCorrente entrada = new DiaCorrente();
         jDesktopPanel1.add(entrada);
         entrada.setVisible(true);
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
+    }//GEN-LAST:event_registrarButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPanel1;
@@ -194,7 +178,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem registrarButton;
     // End of variables declaration//GEN-END:variables
 }

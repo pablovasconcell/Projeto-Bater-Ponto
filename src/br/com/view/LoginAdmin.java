@@ -6,10 +6,6 @@ import javax.swing.JOptionPane;
 
 public class LoginAdmin extends javax.swing.JFrame {
 
-    
-    
-    
-    
     public LoginAdmin() {
         initComponents();
     }
@@ -33,7 +29,7 @@ public class LoginAdmin extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/880039656-ytkexpgxc.gif"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/img/880039656-ytkexpgxc.gif"))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 16)); // NOI18N
         jLabel1.setText("Usuário:");
@@ -106,6 +102,10 @@ public class LoginAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botaoEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEntrarActionPerformed
+        validaLogin();
+    }//GEN-LAST:event_botaoEntrarActionPerformed
+
     private void validaLogin() {
         Principal telaPrincipal = new Principal();
         LoginDAO dao = new LoginDAO();
@@ -118,10 +118,6 @@ public class LoginAdmin extends javax.swing.JFrame {
             setVisible(false);
         }
     }
-    private void botaoEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEntrarActionPerformed
-        validaLogin();
-    }//GEN-LAST:event_botaoEntrarActionPerformed
-
     public static void main(String args[]) {
 
         try {

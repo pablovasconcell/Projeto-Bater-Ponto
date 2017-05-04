@@ -12,5 +12,6 @@
     <property name="hibernate.hbm2ddl.auto">update</property>
     <mapping class="br.com.entity.Funcionario"/>
     <mapping class="br.com.entity.Admin"/>
+    <mapping class="br.com.entity.DiaCorrenteEntity"/>
   </session-factory>
 </hibernate-configuration>
