@@ -14,41 +14,31 @@ public class FuncionarioDAO {
 
     Session sessao;
 
-    public List<Funcionario> buscaTableFuncionario() {
-
+    public List<Funcionario> getFunc() {
         List<Funcionario> listaFunc = new ArrayList<>();
-
         sessao = HibernateUtil.getSessionFactory().openSession();
-
         sessao.beginTransaction();
 
-        Criteria crit = sessao.createCriteria(Funcionario.class);
+        Criteria criteria = sessao.createCriteria(Funcionario.class);
+        criteria.addOrder(Order.asc("id"));
 
-        crit.addOrder(Order.asc("id"));
-
-        listaFunc = crit.list();
+        listaFunc = criteria.list();
 
         return listaFunc;
     }
 
-    public List<Funcionario> buscaFuncID(int idFunc) {
-
-        
-        
-        List<Funcionario> listaFunc = new ArrayList<>();
-
+    public List<Funcionario> getFuncById(Funcionario func) {
+        List<Funcionario> listFunc = new ArrayList<>();
         sessao = HibernateUtil.getSessionFactory().openSession();
-
         sessao.beginTransaction();
 
-        Criteria crit = sessao.createCriteria(Funcionario.class);
+        Criteria criteria = sessao.createCriteria(Funcionario.class);
+        criteria.addOrder(Order.asc("id"));
+        criteria.add(Restrictions.eq("id", func.getId()));
 
-        crit.add(Restrictions.like("id", idFunc + "%"));
+        listFunc = criteria.list();
 
-        listaFunc = crit.list();
-
-        return listaFunc;
-
+        return listFunc;
     }
 
     public boolean inserirFuncionario(Funcionario funcionario) {

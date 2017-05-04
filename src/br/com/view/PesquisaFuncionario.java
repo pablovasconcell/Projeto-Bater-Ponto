@@ -1,20 +1,20 @@
 package br.com.view;
 
-import br.com.model.TableModelFuncionario;
+import br.com.entity.Funcionario;
+import br.com.model.ModelTableFuncionario;
+import br.com.model.ModelTableFuncionarioId;
+import javax.swing.JOptionPane;
+
 
 public class PesquisaFuncionario extends javax.swing.JInternalFrame {
 
-    
-    
-    
-    
-    
-    public static TableModelFuncionario tableFunc;
+    private ModelTableFuncionario modelfunc;
+    private ModelTableFuncionarioId modelId;
 
     public PesquisaFuncionario() {
         initComponents();
-        this.tableFunc = new TableModelFuncionario();
-        this.jTableFunc.setModel(tableFunc);
+        this.modelfunc = new ModelTableFuncionario();
+        this.tableFunc.setModel(modelfunc);
     }
 
     @SuppressWarnings("unchecked")
@@ -23,10 +23,11 @@ public class PesquisaFuncionario extends javax.swing.JInternalFrame {
 
         jLabel7 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        pesqFunc = new javax.swing.JTextField();
+        CodigoPsq = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableFunc = new javax.swing.JTable();
+        tableFunc = new javax.swing.JTable();
+        PsqButton = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Pesquisar Funcionário");
@@ -35,22 +36,17 @@ public class PesquisaFuncionario extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         jLabel7.setText("PESQUISAR FUNCIONÁRIO");
 
-        pesqFunc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pesqFuncActionPerformed(evt);
-            }
-        });
-        pesqFunc.addKeyListener(new java.awt.event.KeyAdapter() {
+        CodigoPsq.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                pesqFuncKeyReleased(evt);
+                CodigoPsqKeyReleased(evt);
             }
         });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         jLabel1.setText("Pesquisa:");
 
-        jTableFunc.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jTableFunc.setModel(new javax.swing.table.DefaultTableModel(
+        tableFunc.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        tableFunc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -58,7 +54,14 @@ public class PesquisaFuncionario extends javax.swing.JInternalFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(jTableFunc);
+        jScrollPane1.setViewportView(tableFunc);
+
+        PsqButton.setText("Ir");
+        PsqButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PsqButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -72,7 +75,9 @@ public class PesquisaFuncionario extends javax.swing.JInternalFrame {
                         .addGap(26, 26, 26)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(pesqFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(CodigoPsq, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(PsqButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(146, 146, 146)
                         .addComponent(jLabel7)))
@@ -87,8 +92,9 @@ public class PesquisaFuncionario extends javax.swing.JInternalFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pesqFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(CodigoPsq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(PsqButton))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -96,26 +102,36 @@ public class PesquisaFuncionario extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void pesqFuncKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pesqFuncKeyReleased
-        if (pesqFunc.getText().isEmpty()) {
-            this.tableFunc = new TableModelFuncionario();
-            this.jTableFunc.setModel(tableFunc);
+    private void CodigoPsqKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CodigoPsqKeyReleased
+        /*if (CodigoPsq.getText().isEmpty()) {
+            this.tableFunc = new ModelTableFuncionario();
+            this.jTableFunc.setModel(modelfunc);
         } else {
-            this.tableFunc = new TableModelFuncionario(Integer.parseInt(pesqFunc.getText()));
-            this.jTableFunc.setModel(tableFunc);
-        }
-    }//GEN-LAST:event_pesqFuncKeyReleased
+            this.tableFunc = new ModelTableFuncionarioId(CodigoPsq.getText());
+            this.tableFunc.setModel(modelfunc);
+        }*/
+    }//GEN-LAST:event_CodigoPsqKeyReleased
 
-    private void pesqFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesqFuncActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pesqFuncActionPerformed
+    private void PsqButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PsqButtonActionPerformed
+        Funcionario func = new Funcionario();
+        
+        if(CodigoPsq.getText().isEmpty() == false){
+            func.setId(Integer.parseInt(CodigoPsq.getText()));
+            this.modelId = new ModelTableFuncionarioId(func);
+            this.tableFunc.setModel(modelId);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Campos vazios!");
+        }
+    }//GEN-LAST:event_PsqButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField CodigoPsq;
+    private javax.swing.JButton PsqButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTableFunc;
-    private javax.swing.JTextField pesqFunc;
+    private javax.swing.JTable tableFunc;
     // End of variables declaration//GEN-END:variables
 }
