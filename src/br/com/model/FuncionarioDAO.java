@@ -25,6 +25,7 @@ public class FuncionarioDAO {
         listaFunc = criteria.list();
 
         return listaFunc;
+    
     }
 
     public List<Funcionario> getFuncById(Funcionario func) {
