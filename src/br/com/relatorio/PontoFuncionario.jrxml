@@ -3,7 +3,7 @@
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="PONTOFUNCIONARIO"/>
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="36"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" fontName="Arial" fontSize="26" isBold="true"/>
 	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
@@ -58,13 +58,6 @@
 					</textElement>
 					<text><![CDATA[Status]]></text>
 				</staticText>
-				<staticText>
-					<reportElement x="272" y="-2" width="80" height="30" forecolor="#FF0E0A" uuid="b6894db6-9111-4529-aba9-eeec2beb682e"/>
-					<textElement verticalAlignment="Middle">
-						<font fontName="Arial" size="14" isBold="true"/>
-					</textElement>
-					<text><![CDATA[Funcionário]]></text>
-				</staticText>
 				<textField>
 					<reportElement x="353" y="0" width="80" height="26" forecolor="#FF1814" uuid="99d0ee0d-fee2-43f0-8ca0-4b74513adea8"/>
 					<textElement verticalAlignment="Middle">
@@ -72,6 +65,13 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
 				</textField>
+				<staticText>
+					<reportElement x="251" y="0" width="89" height="26" forecolor="#FF0E0A" uuid="b6894db6-9111-4529-aba9-eeec2beb682e"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Funcionário:]]></text>
+				</staticText>
 			</band>
 		</groupHeader>
 	</group>
@@ -81,7 +81,7 @@
 	<title>
 		<band height="84" splitType="Stretch">
 			<staticText>
-				<reportElement style="Title" x="210" y="10" width="240" height="33" forecolor="#FF0703" uuid="91f5fe7f-a65f-46a3-81ae-30f2d82c45a2"/>
+				<reportElement style="Title" x="210" y="10" width="240" height="33" forecolor="#000000" uuid="91f5fe7f-a65f-46a3-81ae-30f2d82c45a2"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isItalic="true"/>
 				</textElement>
