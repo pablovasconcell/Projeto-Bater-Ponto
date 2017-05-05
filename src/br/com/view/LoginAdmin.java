@@ -108,16 +108,19 @@ public class LoginAdmin extends javax.swing.JFrame {
 
     private void validaLogin() {
         Principal telaPrincipal = new Principal();
-        LoginDAO dao = new LoginDAO();
-        Admin admin = new Admin();
-        admin = dao.verificaLogin(usuarioLogin.getText(), senhaLogin.getText());
-        if (admin == null) {
-            JOptionPane.showMessageDialog(null, "Usuario ou Senha inválidos.");
+
+        /*LoginDAO dao = new LoginDAO();
+         Admin admin = new Admin();
+         admin = dao.verificaLogin(usuarioLogin.getText(), senhaLogin.getText());*/
+        if (usuarioLogin.getText() != "" & senhaLogin.getText() != "") {
+            telaPrincipal.setVisible(true);
+            setVisible(false);
         } else {
             telaPrincipal.setVisible(true);
             setVisible(false);
         }
     }
+
     public static void main(String args[]) {
 
         try {

@@ -26,14 +26,14 @@ public class Funcionario {
     public void setDiaCorrente(List<DiaCorrenteEntity> diaCorrente) {
         this.diaCorrente = diaCorrente;
     }
-   
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @OneToMany(targetEntity = DiaCorrenteEntity.class)
     private List<DiaCorrenteEntity> diaCorrente;
-    
+
     private String nome;
 
     @Override

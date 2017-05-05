@@ -8,9 +8,6 @@ import javax.persistence.Id;
 @Entity(name = "admin")
 public class Admin {
 
-    
-    
-    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;

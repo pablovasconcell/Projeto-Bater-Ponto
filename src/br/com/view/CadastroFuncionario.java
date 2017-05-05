@@ -159,13 +159,13 @@ public class CadastroFuncionario extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Funcionario funcionario = new Funcionario();
         FuncionarioDAO dao = new FuncionarioDAO();
-        
+
         funcionario.setCPF(cpfunc.getText());
         funcionario.setIdade(Integer.parseInt(idadeFunc.getText()));
         funcionario.setNome(nomeFunc.getText());
         funcionario.setTelefone(teleFunc.getText());
-        
-        if(dao.inserirFuncionario(funcionario)){
+
+        if (dao.inserirFuncionario(funcionario)) {
             JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
             setVisible(false);
         }

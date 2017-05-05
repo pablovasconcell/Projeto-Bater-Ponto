@@ -6,9 +6,6 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
-
-
-
 public class LoginDAO {
 
     private Session sessao;

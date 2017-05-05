@@ -5,7 +5,6 @@ import br.com.model.ModelTableFuncionario;
 import br.com.model.ModelTableFuncionarioId;
 import javax.swing.JOptionPane;
 
-
 public class PesquisaFuncionario extends javax.swing.JInternalFrame {
 
     private ModelTableFuncionario modelfunc;
@@ -104,23 +103,22 @@ public class PesquisaFuncionario extends javax.swing.JInternalFrame {
 
     private void CodigoPsqKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CodigoPsqKeyReleased
         /*if (CodigoPsq.getText().isEmpty()) {
-            this.tableFunc = new ModelTableFuncionario();
-            this.jTableFunc.setModel(modelfunc);
-        } else {
-            this.tableFunc = new ModelTableFuncionarioId(CodigoPsq.getText());
-            this.tableFunc.setModel(modelfunc);
-        }*/
+         this.tableFunc = new ModelTableFuncionario();
+         this.jTableFunc.setModel(modelfunc);
+         } else {
+         this.tableFunc = new ModelTableFuncionarioId(CodigoPsq.getText());
+         this.tableFunc.setModel(modelfunc);
+         }*/
     }//GEN-LAST:event_CodigoPsqKeyReleased
 
     private void PsqButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PsqButtonActionPerformed
         Funcionario func = new Funcionario();
-        
-        if(CodigoPsq.getText().isEmpty() == false){
+
+        if (CodigoPsq.getText().isEmpty() == false) {
             func.setId(Integer.parseInt(CodigoPsq.getText()));
             this.modelId = new ModelTableFuncionarioId(func);
             this.tableFunc.setModel(modelId);
-        }
-        else{
+        } else {
             JOptionPane.showMessageDialog(null, "Campos vazios!");
         }
     }//GEN-LAST:event_PsqButtonActionPerformed

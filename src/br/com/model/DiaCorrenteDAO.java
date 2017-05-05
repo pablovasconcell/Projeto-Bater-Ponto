@@ -16,7 +16,7 @@ public class DiaCorrenteDAO {
             sessao.save(diaCorrente);
             sessao.getTransaction().commit();
             return true;
-        } catch (Exception ex){
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
             return false;
         } finally {

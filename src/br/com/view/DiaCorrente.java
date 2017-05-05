@@ -39,7 +39,6 @@ public class DiaCorrente extends javax.swing.JInternalFrame {
         registrar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         horaEntrada = new javax.swing.JComboBox();
         minutoEntrada = new javax.swing.JComboBox();
@@ -47,7 +46,6 @@ public class DiaCorrente extends javax.swing.JInternalFrame {
         minutoS = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
         cbxFunc = new javax.swing.JComboBox();
-        dataE = new javax.swing.JTextField();
 
         setClosable(true);
         setTitle("Entrada de Funcionário");
@@ -66,9 +64,6 @@ public class DiaCorrente extends javax.swing.JInternalFrame {
         jLabel2.setText("Hora de Entrada:");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/img/Sem Título-1.png"))); // NOI18N
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
-        jLabel3.setText("Data de Entrada:");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         jLabel4.setText("Hora de Saída:");
@@ -100,10 +95,6 @@ public class DiaCorrente extends javax.swing.JInternalFrame {
                         .addGap(23, 23, 23)
                         .addComponent(cbxFunc, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(dataE, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(registrar)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -129,11 +120,7 @@ public class DiaCorrente extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(cbxFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(dataE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(horaEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -152,7 +139,7 @@ public class DiaCorrente extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
-        
+
         DiaCorrenteEntity diaCorrente = new DiaCorrenteEntity();
         DiaCorrenteDAO dao = new DiaCorrenteDAO();
 
@@ -171,7 +158,7 @@ public class DiaCorrente extends javax.swing.JInternalFrame {
             SimpleDateFormat format = new SimpleDateFormat("HH:mm");
             Date date1;
             Date date2;
-  
+
             long differen;
             try {
 
@@ -179,25 +166,25 @@ public class DiaCorrente extends javax.swing.JInternalFrame {
                 date2 = format.parse(tmp2);
                 differen = date1.getTime() - date2.getTime();
                 differen = differen * -1;
-                int tempoMin =(int) TimeUnit.MILLISECONDS.toMinutes(differen);
-                if(tempoMin==540){
+                int tempoMin = (int) TimeUnit.MILLISECONDS.toMinutes(differen);
+                if (tempoMin == 540) {
                     diaCorrente.setTempo(0);
                     diaCorrente.setStatus("Normal");
-                }else if(tempoMin<540){
+                } else if (tempoMin < 540) {
                     diaCorrente.setTempo(abs(tempoMin - 540));
                     diaCorrente.setStatus("Atrasado");
-                }else if(tempoMin>540){
+                } else if (tempoMin > 540) {
                     diaCorrente.setTempo(tempoMin - 540);
                     diaCorrente.setStatus("Hora Extra");
                 }
-                
+
             } catch (ParseException ex) {
 
             }
-            
+
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             Date date = new Date();
-            
+
             diaCorrente.setData(dateFormat.format(date));
             diaCorrente.setHoraE(hrE);
             diaCorrente.setHoraS(hrS);
@@ -214,12 +201,10 @@ public class DiaCorrente extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cbxFunc;
-    private javax.swing.JTextField dataE;
     private javax.swing.JComboBox horaEntrada;
     private javax.swing.JComboBox horaS;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JComboBox minutoEntrada;

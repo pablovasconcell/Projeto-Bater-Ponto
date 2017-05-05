@@ -8,14 +8,14 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class DiaCorrenteEntity {
-    
+
     private String data;
     private int horaE;
     private int minutoE;
-    
+
     private int horaS;
     private int minutoS;
-    
+
     private String status;
     private int tempo;
 
@@ -34,11 +34,10 @@ public class DiaCorrenteEntity {
     public void setTempo(int tempo) {
         this.tempo = tempo;
     }
-    
+
     @ManyToOne(targetEntity = Funcionario.class)
     private Funcionario funcionario;
-    
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -50,7 +49,7 @@ public class DiaCorrenteEntity {
     public void setFuncionario(Funcionario funcionario) {
         this.funcionario = funcionario;
     }
-    
+
     public int getHoraE() {
         return horaE;
     }
@@ -89,7 +88,7 @@ public class DiaCorrenteEntity {
 
     public void setMinutoS(int minutoS) {
         this.minutoS = minutoS;
-    }    
+    }
 
     public String getData() {
         return data;

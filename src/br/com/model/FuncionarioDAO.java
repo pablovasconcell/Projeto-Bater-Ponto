@@ -42,33 +42,33 @@ public class FuncionarioDAO {
     }
 
     public boolean inserirFuncionario(Funcionario funcionario) {
-        try{
+        try {
             sessao = HibernateUtil.getSessionFactory().openSession();
             sessao.beginTransaction();
             sessao.save(funcionario);
             sessao.getTransaction().commit();
             return true;
-        }catch(Exception ex){
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
             return false;
-        }finally{
+        } finally {
             sessao.close();
         }
     }
-    
-    public List<Funcionario> getFuncionarios(){
-        
+
+    public List<Funcionario> getFuncionarios() {
+
         List<Funcionario> list = new ArrayList<>();
 
-            sessao = HibernateUtil.getSessionFactory().openSession();
-            sessao.beginTransaction();
-            Criteria criteria = sessao.createCriteria(Funcionario.class);
-            criteria.addOrder(Order.asc("nome"));
-            
-            list = criteria.list();
-            
-            sessao.close();
-            return list;
-    
+        sessao = HibernateUtil.getSessionFactory().openSession();
+        sessao.beginTransaction();
+        Criteria criteria = sessao.createCriteria(Funcionario.class);
+        criteria.addOrder(Order.asc("nome"));
+
+        list = criteria.list();
+
+        sessao.close();
+        return list;
+
     }
 }

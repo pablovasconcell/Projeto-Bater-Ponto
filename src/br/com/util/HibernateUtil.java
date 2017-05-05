@@ -3,11 +3,6 @@ package br.com.util;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.SessionFactory;
 
-
-
-
-
-
 public class HibernateUtil {
 
     private static final SessionFactory sessionFactory;
